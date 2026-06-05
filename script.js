@@ -1,135 +1,127 @@
-const sections = document.querySelectorAll('.section');
+window.onload = function () {
+
+```
+const loading = document.getElementById("loading-screen");
+
+if (loading) {
+    loading.style.display = "none";
+}
+
+const welcome = document.getElementById("welcome");
+
+if (welcome) {
+    welcome.classList.add("active");
+}
+```
+
+};
+
+// Section Navigation
 
 function nextSection(id) {
-sections.forEach(section => {
-section.classList.remove('active');
-});
 
 ```
-document.getElementById(id).classList.add('active');
+document.querySelectorAll(".section").forEach(section => {
+    section.classList.remove("active");
+});
 
-if (id === 'letterSection') {
-    startTypewriter();
-}
+document.getElementById(id).classList.add("active");
 ```
 
 }
 
-// Music Control
-const musicBtn = document.getElementById('musicBtn');
-const bgMusic = document.getElementById('bgMusic');
+// Funny Buttons
 
-musicBtn.addEventListener('click', () => {
-
-```
-if (bgMusic.paused) {
-    bgMusic.play();
-    musicBtn.innerHTML = "⏸ Pause Music";
-} else {
-    bgMusic.pause();
-    musicBtn.innerHTML = "🎵 Turn On The Vibes";
-}
-```
-
-});
-
-// Loading Screen
-window.addEventListener('load', () => {
-
-```
-setTimeout(() => {
-
-    document.getElementById('loading-screen').style.display = 'none';
-
-}, 2500);
-```
-
-});
-
-// Funny Section
 function showAwesome() {
 
 ```
-document.getElementById('awesomeResult').innerHTML =
+document.getElementById("awesomeResult").innerHTML =
     "I knew it 😂";
 
 setTimeout(() => {
-
-    nextSection('continueSection');
-
-}, 1500);
+    nextSection("continueSection");
+}, 400);
 ```
 
 }
 
-// Escaping NO Button
-const noBtn = document.getElementById('noBtn');
+// NO Button Escape
 
-if (noBtn) {
+const noBtn = document.getElementById("noBtn");
+
+document.addEventListener("mousemove", () => {
 
 ```
-noBtn.addEventListener('mouseover', () => {
+const btn = document.getElementById("noBtn");
 
-    const x = Math.floor(Math.random() * 250);
-    const y = Math.floor(Math.random() * 250);
+if (!btn) return;
 
-    noBtn.style.position = "absolute";
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+btn.addEventListener("mouseover", () => {
+
+    btn.style.position = "absolute";
+
+    btn.style.left =
+        Math.random() * 70 + "%";
+
+    btn.style.top =
+        Math.random() * 70 + "%";
 
 });
 ```
 
-}
+});
 
-// Gift Box
+// Gift Open
+
 function openGift() {
 
 ```
-const giftBox = document.getElementById('giftBox');
+document.getElementById("giftBox").innerHTML =
+    "💖";
 
-giftBox.innerHTML = "💖";
-
-document.getElementById('giftMessage').innerHTML =
+document.getElementById("giftMessage").innerHTML =
     "Congratulations! You unlocked your first surprise ✨";
 
 setTimeout(() => {
 
-    nextSection('messageSection');
+    nextSection("messageSection");
 
-}, 2500);
+}, 600);
 ```
 
 }
 
-// Find The Gift Game
-const boxes = document.querySelectorAll('.box');
+// Gift Game
 
-let winningBox = Math.floor(Math.random() * 6);
+const boxes = document.querySelectorAll(".box");
+
+const winningBox = Math.floor(Math.random() * 6);
 
 boxes.forEach((box, index) => {
 
 ```
-box.addEventListener('click', () => {
+box.addEventListener("click", () => {
 
     if (index === winningBox) {
 
         box.innerHTML = "🎁";
 
-        document.getElementById('gameResult').innerHTML =
+        document.getElementById("gameResult").innerHTML =
             "You Found It 🎉";
 
         setTimeout(() => {
 
-            nextSection('letterSection');
+            nextSection("letterSection");
 
-        }, 2000);
+            startTypewriter();
+
+        }, 700);
 
     } else {
 
         box.innerHTML = "❌";
 
-        document.getElementById('gameResult').innerHTML =
+        document.getElementById("gameResult").innerHTML =
             "Oops 😅 Try Again";
 
     }
@@ -139,48 +131,48 @@ box.addEventListener('click', () => {
 
 });
 
-// Typewriter Effect
-const letterText = `
-Dear Khushi,
+// Typewriter
+
+const text = `
+Dear Khushi ❤️
 
 Thank you for staying till the end.
 
-Most people close random websites.
+This website was created
+just to make you smile.
 
-You didn't. 😌
+And honestly...
 
-That means a lot.
+I hope it worked. ✨
 
-I hope this little surprise
-made you smile today. 💖
+Have a beautiful day 💖
 `;
-
-let indexNum = 0;
 
 function startTypewriter() {
 
 ```
-const target = document.getElementById('typewriter');
+let i = 0;
+
+const target =
+    document.getElementById("typewriter");
 
 target.innerHTML = "";
 
-indexNum = 0;
+function typing() {
 
-function type() {
+    if (i < text.length) {
 
-    if (indexNum < letterText.length) {
+        target.innerHTML += text.charAt(i);
 
-        target.innerHTML += letterText.charAt(indexNum);
+        i++;
 
-        indexNum++;
-
-        setTimeout(type, 45);
+        setTimeout(typing, 15);
 
     }
 
 }
 
-type();
+typing();
 ```
 
 }
