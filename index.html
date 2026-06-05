@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Special Surprise For Khushi 💖</title>
+
+<title>Special Surprise For Khushi 💖</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -14,232 +16,172 @@
 
 <div class="hearts"></div>
 
-<!-- Loading Screen -->
-<div id="loading-screen">
-    <h1>Preparing Something Special For Khushi... ✨</h1>
-</div>
+<section class="hero">
 
-<!-- Main Content -->
-<div id="main-content">
+```
+<div class="card">
 
-    <!-- Music Button -->
-    <button id="musicBtn">🎵 Turn On The Vibes</button>
+    <h1>Hey Khushi 👋</h1>
 
-    <audio id="bgMusic" loop>
-        <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
+    <p>
+        Someone made a little surprise
+        just to make you smile today 💖
+    </p>
 
-    <!-- Welcome Section -->
-    <section class="section active" id="welcome">
-
-        <div class="glass-card">
-            <h1 id="welcomeTitle">Hey Khushi 👋</h1>
-
-            <p id="welcomeText">
-                Someone spent a little time creating this
-                just to make you smile today. 💖
-            </p>
-
-            <button onclick="nextSection('funny1')">
-                Open The Surprise 🎁
-            </button>
-        </div>
-
-    </section>
-
-    <!-- Funny Question -->
-    <section class="section" id="funny1">
-
-        <div class="glass-card">
-
-            <h2>Quick Question 😂</h2>
-
-            <p>
-                Before moving forward,
-                please answer honestly...
-            </p>
-
-            <h3>Are you awesome?</h3>
-
-            <div class="btn-group">
-                <button onclick="showAwesome()">
-                    YES 😎
-                </button>
-
-                <button onclick="showAwesome()">
-                    ALSO YES 😌
-                </button>
-            </div>
-
-            <p id="awesomeResult"></p>
-
-        </div>
-
-    </section>
-
-    <!-- Escaping Button -->
-    <section class="section" id="continueSection">
-
-        <div class="glass-card">
-
-            <h2>One More Thing 😆</h2>
-
-            <p>
-                Would you like to continue?
-            </p>
-
-            <div class="btn-group">
-
-                <button onclick="nextSection('giftSection')">
-                    YES ❤️
-                </button>
-
-                <button id="noBtn">
-                    NO 🙈
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Gift Box -->
-    <section class="section" id="giftSection">
-
-        <div class="glass-card">
-
-            <h2>A Mysterious Gift Appeared 🎁</h2>
-
-            <div id="giftBox" onclick="openGift()">
-                🎁
-            </div>
-
-            <p id="giftMessage"></p>
-
-        </div>
-
-    </section>
-
-    <!-- Messages -->
-    <section class="section" id="messageSection">
-
-        <div class="glass-card message-card">
-
-            <h2>💌 Little Notes</h2>
-
-            <div class="message">
-
-                <p>
-                    Some people make a room brighter.
-                    You somehow do it through a screen. ✨
-                </p>
-
-                <p>
-                    I spent more time making this website
-                    than deciding what to watch on Netflix. 😂
-                </p>
-
-                <p>
-                    This may be just a small surprise,
-                    but it was made with a genuine smile. 💖
-                </p>
-
-                <p>
-                    You're probably wondering why this website exists...
-                    Honestly, I just wanted to make you smile. 😊
-                </p>
-
-            </div>
-
-            <button onclick="nextSection('gameSection')">
-                Continue 🎮
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- Game Section -->
-    <section class="section" id="gameSection">
-
-        <div class="glass-card">
-
-            <h2>Find The Hidden Gift 🎁</h2>
-
-            <p>
-                One of these boxes contains a secret gift.
-            </p>
-
-            <div class="game-grid">
-
-                <div class="box" data-box="1"></div>
-                <div class="box" data-box="2"></div>
-                <div class="box" data-box="3"></div>
-                <div class="box" data-box="4"></div>
-                <div class="box" data-box="5"></div>
-                <div class="box" data-box="6"></div>
-
-            </div>
-
-            <p id="gameResult"></p>
-
-        </div>
-
-    </section>
-
-    <!-- Letter Section -->
-    <section class="section" id="letterSection">
-
-        <div class="glass-card">
-
-            <h2>💌 Secret Letter</h2>
-
-            <p id="typewriter"></p>
-
-            <button onclick="nextSection('finalSection')">
-                Final Surprise 🌹
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- Final Section -->
-    <section class="section" id="finalSection">
-
-        <div class="glass-card">
-
-            <h1>🌹 Final Surprise 🌹</h1>
-
-            <p>
-                There was never really a hidden gift...
-            </p>
-
-            <p>
-                The real gift was getting
-                a few minutes of your attention. 💖
-            </p>
-
-            <p>
-                And honestly...
-            </p>
-
-            <p>
-                That was enough. ✨
-            </p>
-
-            <h2>Thank You Khushi ❤️</h2>
-
-            <button onclick="location.reload()">
-                Replay Surprise 💖
-            </button>
-
-        </div>
-
-    </section>
+    <button onclick="showSection('funnySection')">
+        Open Surprise 🎁
+    </button>
 
 </div>
+```
+
+</section>
+
+<section id="funnySection" class="hidden">
+
+```
+<div class="card">
+
+    <h2>Quick Question 😂</h2>
+
+    <p>Before we continue...</p>
+
+    <h3>Are you awesome?</h3>
+
+    <button onclick="awesomeAnswer()">
+        YES 😎
+    </button>
+
+    <button onclick="awesomeAnswer()">
+        ALSO YES 😌
+    </button>
+
+    <p id="awesomeResult"></p>
+
+</div>
+```
+
+</section>
+
+<section id="continueSection" class="hidden">
+
+```
+<div class="card">
+
+    <h2>One More Thing 😆</h2>
+
+    <p>Would you like to continue?</p>
+
+    <div class="button-wrapper">
+
+        <button onclick="showSection('giftSection')">
+            YES ❤️
+        </button>
+
+        <button id="noBtn">
+            NO 🙈
+        </button>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<section id="giftSection" class="hidden">
+
+```
+<div class="card">
+
+    <h2>🎁 Mysterious Gift</h2>
+
+    <div id="giftBox" onclick="openGift()">
+        🎁
+    </div>
+
+    <p id="giftText"></p>
+
+</div>
+```
+
+</section>
+
+<section id="messageSection" class="hidden">
+
+```
+<div class="card">
+
+    <h2>💌 Little Notes</h2>
+
+    <div class="message-box">
+        Some people make a room brighter.
+        You somehow do it through a screen ✨
+    </div>
+
+    <div class="message-box">
+        I spent more time making this website
+        than choosing what to watch 😂
+    </div>
+
+    <div class="message-box">
+        This surprise may be small,
+        but it comes with a genuine smile 💖
+    </div>
+
+    <button onclick="showSection('gameSection')">
+        Continue 🎮
+    </button>
+
+</div>
+```
+
+</section>
+
+<section id="gameSection" class="hidden">
+
+```
+<div class="card">
+
+    <h2>Find The Hidden Gift 🎁</h2>
+
+    <p>One box contains the gift.</p>
+
+    <div class="grid">
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+    </div>
+
+    <p id="gameResult"></p>
+
+</div>
+```
+
+</section>
+
+<section id="finalSection" class="hidden">
+
+```
+<div class="card">
+
+    <h1>💖 Final Surprise 💖</h1>
+
+    <p id="typewriter"></p>
+
+    <button onclick="location.reload()">
+        Replay Surprise ✨
+    </button>
+
+</div>
+```
+
+</section>
 
 <script src="script.js"></script>
 
