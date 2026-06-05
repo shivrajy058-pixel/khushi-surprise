@@ -1,178 +1,123 @@
-window.onload = function () {
+function showSection(id){
 
-```
-const loading = document.getElementById("loading-screen");
-
-if (loading) {
-    loading.style.display = "none";
-}
-
-const welcome = document.getElementById("welcome");
-
-if (welcome) {
-    welcome.classList.add("active");
-}
-```
-
-};
-
-// Section Navigation
-
-function nextSection(id) {
-
-```
-document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
+document.querySelectorAll("section").forEach(section=>{
+section.classList.add("hidden");
 });
 
-document.getElementById(id).classList.add("active");
-```
+document.getElementById(id).classList.remove("hidden");
 
 }
 
-// Funny Buttons
+function awesomeAnswer(){
 
-function showAwesome() {
-
-```
 document.getElementById("awesomeResult").innerHTML =
-    "I knew it 😂";
+"Of course 😂";
 
-setTimeout(() => {
-    nextSection("continueSection");
-}, 400);
-```
-
-}
-
-// NO Button Escape
-
-const noBtn = document.getElementById("noBtn");
-
-document.addEventListener("mousemove", () => {
-
-```
-const btn = document.getElementById("noBtn");
-
-if (!btn) return;
-
-btn.addEventListener("mouseover", () => {
-
-    btn.style.position = "absolute";
-
-    btn.style.left =
-        Math.random() * 70 + "%";
-
-    btn.style.top =
-        Math.random() * 70 + "%";
-
-});
-```
-
-});
-
-// Gift Open
-
-function openGift() {
-
-```
-document.getElementById("giftBox").innerHTML =
-    "💖";
-
-document.getElementById("giftMessage").innerHTML =
-    "Congratulations! You unlocked your first surprise ✨";
-
-setTimeout(() => {
-
-    nextSection("messageSection");
-
-}, 600);
-```
+setTimeout(()=>{
+showSection("continueSection");
+},500);
 
 }
 
-// Gift Game
+const noBtn=document.getElementById("noBtn");
 
-const boxes = document.querySelectorAll(".box");
+if(noBtn){
 
-const winningBox = Math.floor(Math.random() * 6);
+noBtn.addEventListener("mouseover",()=>{
 
-boxes.forEach((box, index) => {
+const x=Math.random()*300-150;
+const y=Math.random()*200-100;
 
-```
-box.addEventListener("click", () => {
-
-    if (index === winningBox) {
-
-        box.innerHTML = "🎁";
-
-        document.getElementById("gameResult").innerHTML =
-            "You Found It 🎉";
-
-        setTimeout(() => {
-
-            nextSection("letterSection");
-
-            startTypewriter();
-
-        }, 700);
-
-    } else {
-
-        box.innerHTML = "❌";
-
-        document.getElementById("gameResult").innerHTML =
-            "Oops 😅 Try Again";
-
-    }
+noBtn.style.transform=
+`translate(${x}px,${y}px)`;
 
 });
-```
-
-});
-
-// Typewriter
-
-const text = `
-Dear Khushi ❤️
-
-Thank you for staying till the end.
-
-This website was created
-just to make you smile.
-
-And honestly...
-
-I hope it worked. ✨
-
-Have a beautiful day 💖
-`;
-
-function startTypewriter() {
-
-```
-let i = 0;
-
-const target =
-    document.getElementById("typewriter");
-
-target.innerHTML = "";
-
-function typing() {
-
-    if (i < text.length) {
-
-        target.innerHTML += text.charAt(i);
-
-        i++;
-
-        setTimeout(typing, 15);
-
-    }
 
 }
 
-typing();
-```
+function openGift(){
+
+document.getElementById("giftBox").innerHTML="💖";
+
+document.getElementById("giftText").innerHTML=
+"You unlocked the surprise ✨";
+
+setTimeout(()=>{
+showSection("messageSection");
+},700);
+
+}
+
+const boxes=document.querySelectorAll(".box");
+
+const winner=Math.floor(Math.random()*6);
+
+boxes.forEach((box,index)=>{
+
+box.addEventListener("click",()=>{
+
+if(index===winner){
+
+box.innerHTML="🎁";
+
+document.getElementById("gameResult").innerHTML=
+"You Found The Gift 🎉";
+
+setTimeout(()=>{
+
+showSection("finalSection");
+
+startTyping();
+
+},800);
+
+}else{
+
+box.innerHTML="❌";
+
+}
+
+});
+
+});
+
+const message=`Dear Khushi ❤️
+
+This website was made for one reason...
+
+To make you smile 😊
+
+I hope you enjoyed every little surprise.
+
+Thank you for spending a few minutes here.
+
+You are truly awesome ✨
+
+Have a beautiful day 💖`;
+
+function startTyping(){
+
+const target=
+document.getElementById("typewriter");
+
+target.innerHTML="";
+
+let i=0;
+
+function type(){
+
+if(i<message.length){
+
+target.innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(type,20);
+
+}
+
+}
+
+type();
 
 }
