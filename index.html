@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,180 +10,184 @@
 <link rel="stylesheet" href="style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <div class="hearts"></div>
 
-<section class="hero">
+<!-- Welcome Screen -->
 
-```
+<section id="welcome">
+
 <div class="card">
 
-    <h1>Hey Khushi 👋</h1>
+<h1>Hey Khushi 👋</h1>
 
-    <p>
-        Someone made a little surprise
-        just to make you smile today 💖
-    </p>
+<p>
+Someone spent a little time creating this
+just to make you smile today 💖
+</p>
 
-    <button onclick="showSection('funnySection')">
-        Open Surprise 🎁
-    </button>
+<button onclick="showSection('funnySection')">
+Open The Surprise 🎁
+</button>
 
 </div>
-```
 
 </section>
+
+<!-- Funny Question -->
 
 <section id="funnySection" class="hidden">
 
-```
 <div class="card">
 
-    <h2>Quick Question 😂</h2>
+<h2>Quick Question 😂</h2>
 
-    <p>Before we continue...</p>
+<p>Before we continue...</p>
 
-    <h3>Are you awesome?</h3>
+<h3>Are you awesome?</h3>
 
-    <button onclick="awesomeAnswer()">
-        YES 😎
-    </button>
+<button onclick="awesomeAnswer()">
+YES 😎
+</button>
 
-    <button onclick="awesomeAnswer()">
-        ALSO YES 😌
-    </button>
+<button onclick="awesomeAnswer()">
+ALSO YES 😌
+</button>
 
-    <p id="awesomeResult"></p>
+<p id="awesomeResult"></p>
 
 </div>
-```
 
 </section>
+
+<!-- Continue -->
 
 <section id="continueSection" class="hidden">
 
-```
 <div class="card">
 
-    <h2>One More Thing 😆</h2>
+<h2>One More Thing 😆</h2>
 
-    <p>Would you like to continue?</p>
+<p>Would you like to continue?</p>
 
-    <div class="button-wrapper">
+<button onclick="showSection('giftSection')">
+YES ❤️
+</button>
 
-        <button onclick="showSection('giftSection')">
-            YES ❤️
-        </button>
-
-        <button id="noBtn">
-            NO 🙈
-        </button>
-
-    </div>
+<button id="noBtn">
+NO 🙈
+</button>
 
 </div>
-```
 
 </section>
+
+<!-- Gift -->
 
 <section id="giftSection" class="hidden">
 
-```
 <div class="card">
 
-    <h2>🎁 Mysterious Gift</h2>
+<h2>🎁 A Mysterious Gift Appeared</h2>
 
-    <div id="giftBox" onclick="openGift()">
-        🎁
-    </div>
+<div id="giftBox" onclick="openGift()">
+🎁
+</div>
 
-    <p id="giftText"></p>
+<p id="giftText"></p>
 
 </div>
-```
 
 </section>
+
+<!-- Messages -->
 
 <section id="messageSection" class="hidden">
 
-```
 <div class="card">
 
-    <h2>💌 Little Notes</h2>
+<h2>💌 Little Notes</h2>
 
-    <div class="message-box">
-        Some people make a room brighter.
-        You somehow do it through a screen ✨
-    </div>
+<div class="message-box">
+Some people make a room brighter.
+You somehow do it through a screen ✨
+</div>
 
-    <div class="message-box">
-        I spent more time making this website
-        than choosing what to watch 😂
-    </div>
+<div class="message-box">
+I spent more time making this website
+than deciding what to watch 😂
+</div>
 
-    <div class="message-box">
-        This surprise may be small,
-        but it comes with a genuine smile 💖
-    </div>
+<div class="message-box">
+This surprise may be small,
+but it comes with a genuine smile 💖
+</div>
 
-    <button onclick="showSection('gameSection')">
-        Continue 🎮
-    </button>
+<div class="message-box">
+Honestly...
+I just wanted to make you smile 😊
+</div>
+
+<button onclick="showSection('gameSection')">
+Continue 🎮
+</button>
 
 </div>
-```
 
 </section>
+
+<!-- Game -->
 
 <section id="gameSection" class="hidden">
 
-```
 <div class="card">
 
-    <h2>Find The Hidden Gift 🎁</h2>
+<h2>Find The Hidden Gift 🎁</h2>
 
-    <p>One box contains the gift.</p>
+<p>One of these 6 boxes contains the gift.</p>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
 
-    </div>
-
-    <p id="gameResult"></p>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
 
 </div>
-```
+
+<p id="gameResult"></p>
+
+</div>
 
 </section>
 
+<!-- Final Surprise -->
+
 <section id="finalSection" class="hidden">
 
-```
 <div class="card">
 
-    <h1>💖 Final Surprise 💖</h1>
+<h1>💖 Final Surprise 💖</h1>
 
-    <p id="typewriter"></p>
+<p id="typewriter"></p>
 
-    <button onclick="location.reload()">
-        Replay Surprise ✨
-    </button>
+<button onclick="location.reload()">
+Replay Surprise ✨
+</button>
 
 </div>
-```
 
 </section>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
