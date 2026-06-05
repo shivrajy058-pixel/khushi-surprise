@@ -7,139 +7,158 @@ font-family:'Poppins',sans-serif;
 
 body{
 min-height:100vh;
-overflow-x:hidden;
-color:#fff;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
 background:linear-gradient(-45deg,#ff6ec7,#ff4fa3,#845ec2,#5b5fef);
 background-size:400% 400%;
-animation:bgAnimation 12s ease infinite;
+animation:bgMove 12s ease infinite;
+color:#fff;
+position:relative;
 }
 
-@keyframes bgAnimation{
+@keyframes bgMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-/* Loading */
+/* Hearts */
 
-#loading-screen{
+.hearts{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:#0f0f0f;
-z-index:9999;
-padding:20px;
+pointer-events:none;
+overflow:hidden;
+z-index:0;
 }
 
-#loading-screen h1{
-font-size:2rem;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
-}
-
-/* Main */
-
-#main-content{
+.hearts::before,
+.hearts::after{
+content:"❤️ 💖 💕 💗 ❤️ 💖";
+position:absolute;
+font-size:30px;
 width:100%;
-min-height:100vh;
+opacity:.25;
+animation:hearts 15s linear infinite;
+}
+
+.hearts::after{
+animation-delay:7s;
+}
+
+@keyframes hearts{
+0%{
+transform:translateY(100vh);
+}
+100%{
+transform:translateY(-120vh);
+}
+}
+
+/* Sections */
+
+section{
+position:absolute;
+width:100%;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 padding:20px;
+z-index:2;
 }
 
-.section{
+.hidden{
 display:none;
-width:100%;
-max-width:900px;
 }
 
-.section.active{
-display:block;
-animation:fadeIn .8s ease;
+/* Card */
+
+.card{
+width:90%;
+max-width:700px;
+padding:40px;
+border-radius:30px;
+text-align:center;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.25);
+
+box-shadow:0 8px 40px rgba(0,0,0,.25);
+
+animation:cardPop .5s ease;
 }
 
-@keyframes fadeIn{
+@keyframes cardPop{
+
 from{
 opacity:0;
-transform:translateY(20px);
+transform:scale(.9);
 }
+
 to{
 opacity:1;
-transform:translateY(0);
-}
-}
-
-/* Glass Card */
-
-.glass-card{
-backdrop-filter:blur(15px);
-background:rgba(255,255,255,0.12);
-border:1px solid rgba(255,255,255,0.2);
-border-radius:25px;
-padding:40px;
-text-align:center;
-box-shadow:0 8px 32px rgba(0,0,0,.2);
+transform:scale(1);
 }
 
-.glass-card h1,
-.glass-card h2,
-.glass-card h3{
-margin-bottom:20px;
 }
 
-.glass-card p{
-line-height:1.8;
+.card h1{
+font-size:3rem;
 margin-bottom:15px;
+}
+
+.card h2{
+font-size:2rem;
+margin-bottom:15px;
+}
+
+.card h3{
+margin:15px 0;
+}
+
+.card p{
+line-height:1.8;
+font-size:1.1rem;
 }
 
 /* Buttons */
 
 button{
-border:none;
+margin:12px;
 padding:14px 30px;
+border:none;
 border-radius:50px;
 cursor:pointer;
 font-size:1rem;
 font-weight:600;
-margin:10px;
 color:#fff;
-background:linear-gradient(135deg,#ff4fa3,#845ec2);
+
+background:linear-gradient(
+135deg,
+#ff4fa3,
+#845ec2
+);
+
 transition:.3s;
 }
 
 button:hover{
-transform:translateY(-3px) scale(1.05);
+transform:translateY(-4px) scale(1.05);
 }
 
-.btn-group{
-margin-top:20px;
-}
-
-/* Music Button */
-
-#musicBtn{
-position:fixed;
-top:15px;
-right:15px;
-z-index:999;
-}
-
-/* Gift Box */
+/* Gift */
 
 #giftBox{
-font-size:100px;
+font-size:120px;
 cursor:pointer;
 transition:.4s;
 margin:20px 0;
@@ -149,38 +168,43 @@ margin:20px 0;
 transform:scale(1.15) rotate(10deg);
 }
 
-/* Message Section */
+/* Messages */
 
-.message{
-margin-top:20px;
-}
-
-.message p{
-background:rgba(255,255,255,.08);
+.message-box{
+margin:15px 0;
 padding:15px;
 border-radius:15px;
-margin-bottom:15px;
+background:rgba(255,255,255,.1);
 }
 
 /* Game */
 
-.game-grid{
+.grid{
+margin-top:25px;
+
 display:grid;
 grid-template-columns:repeat(3,1fr);
+
 gap:15px;
-margin-top:25px;
 }
 
 .box{
 height:100px;
-border-radius:15px;
-background:rgba(255,255,255,.15);
-border:1px solid rgba(255,255,255,.25);
-cursor:pointer;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 font-size:2rem;
+
+border-radius:15px;
+
+cursor:pointer;
+
+background:rgba(255,255,255,.15);
+
+border:1px solid rgba(255,255,255,.25);
+
 transition:.3s;
 }
 
@@ -191,104 +215,64 @@ background:rgba(255,255,255,.25);
 
 #gameResult{
 margin-top:20px;
-font-weight:bold;
-font-size:1.2rem;
+font-weight:700;
 }
 
-/* Typewriter */
+/* Final Letter */
 
 #typewriter{
 white-space:pre-line;
 line-height:2;
+font-size:1.1rem;
 min-height:220px;
 text-align:left;
-}
-
-/* Floating Hearts */
-
-.hearts{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:-1;
-}
-
-.hearts::before,
-.hearts::after{
-content:"❤️ ❤️ 💖 💕 ❤️ 💖";
-position:absolute;
-width:100%;
-font-size:30px;
-opacity:.25;
-animation:floatHearts 18s linear infinite;
-}
-
-.hearts::after{
-animation-delay:9s;
-}
-
-@keyframes floatHearts{
-from{
-transform:translateY(100vh);
-}
-to{
-transform:translateY(-120vh);
-}
-}
-
-/* Final Section */
-
-#finalSection h1{
-font-size:2.5rem;
-margin-bottom:20px;
-}
-
-#finalSection h2{
 margin-top:20px;
 }
 
-/* Responsive */
+/* Mobile */
 
 @media(max-width:768px){
 
-```
-.glass-card{
-    padding:25px;
+.card{
+padding:25px;
 }
 
-.game-grid{
-    grid-template-columns:repeat(2,1fr);
+.card h1{
+font-size:2rem;
+}
+
+.card h2{
+font-size:1.6rem;
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr);
 }
 
 #giftBox{
-    font-size:80px;
+font-size:90px;
 }
-
-.glass-card h1{
-    font-size:1.8rem;
-}
-```
 
 }
 
 @media(max-width:480px){
 
-```
-.game-grid{
-    grid-template-columns:1fr 1fr;
-}
-
 button{
-    width:100%;
+width:100%;
+margin:8px 0;
 }
 
-#musicBtn{
-    width:auto;
+.grid{
+grid-template-columns:repeat(2,1fr);
+gap:10px;
 }
-```
+
+.box{
+height:80px;
+}
+
+#typewriter{
+font-size:1rem;
+}
 
 }
